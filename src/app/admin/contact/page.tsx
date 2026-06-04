@@ -109,7 +109,7 @@ export default function AdminContactPage() {
     if (!selected || !replyText.trim()) return;
     setReplyStatus('sending');
     try {
-      const res = await fetch('/api/admin/send-reply', {
+      const res = await fetch('/api/cms-admin/send-reply', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

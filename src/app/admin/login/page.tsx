@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -45,26 +45,6 @@ function StageIndicator({ stage }: { stage: Stage }) {
   );
 }
 
-function InputField({ label, type = 'text', value, onChange, placeholder, autoFocus = false, maxLength, inputMode, onKeyDown }:
-  { label: string; type?: string; value: string; onChange: (v: string) => void; placeholder?: string; autoFocus?: boolean; maxLength?: number; inputMode?: 'numeric'; onKeyDown?: (e: React.KeyboardEvent) => void }) {
-  return (
-    <div>
-      <label className="block text-sm font-semibold text-gray-300 mb-1.5">{label}</label>
-      <input
-        type={type}
-        value={value}
-        onChange={e => onChange(e.target.value)}
-        placeholder={placeholder}
-        autoFocus={autoFocus}
-        maxLength={maxLength}
-        inputMode={inputMode}
-        onKeyDown={onKeyDown}
-        className="w-full px-4 py-3 bg-[#162845] border border-white/10 rounded-xl text-white placeholder-gray-500 text-sm focus:border-[#C9A84C] focus:outline-none transition"
-      />
-    </div>
-  );
-}
-
 // TOTP countdown (30s period)
 function TotpCountdown() {
   const [secs, setSecs] = useState(30 - (Math.floor(Date.now() / 1000) % 30));
@@ -105,7 +85,7 @@ export default function AdminLoginPage() {
     if (!email || !email.includes('@')) { setError('Enter a valid email address.'); return; }
     setLoading(true); clearError();
     try {
-      const res = await fetch('/api/admin/check-email', {
+      const res = await fetch('/api/cms-admin/check-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.trim().toLowerCase() }),
@@ -118,7 +98,7 @@ export default function AdminLoginPage() {
         setStage('totp-verify');
       } else {
         // First time — generate TOTP secret + QR code
-        const setupRes = await fetch('/api/admin/setup-totp', {
+        const setupRes = await fetch('/api/cms-admin/setup-totp', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: email.trim().toLowerCase() }),
@@ -140,7 +120,7 @@ export default function AdminLoginPage() {
     if (code.length !== 6 || !/^\d+$/.test(code)) { setError('Enter the 6-digit code from Google Authenticator.'); return; }
     setLoading(true); clearError();
     try {
-      const res = await fetch('/api/admin/verify-totp', {
+      const res = await fetch('/api/cms-admin/verify-totp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
