@@ -1,0 +1,340 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "schools": "Schools & Institutes",
+    "programs": "Programs",
+    "faculty": "Faculty & Staff",
+    "research": "Research & Innovation",
+    "admission": "Admission",
+    "gallery": "Gallery",
+    "blog": "Blog",
+    "contact": "Contact",
+    "apply": "Apply Now"
+  },
+  "hero": {
+    "tagline": "Empowering World Innovators and Leaders for Global Impact",
+    "subtitle": "A Christian university founded on excellence, faith, and service — located in Bertoua, Cameroon",
+    "cta_apply": "Apply for Admission",
+    "cta_explore": "Explore Our Schools",
+    "admission_open": "Admissions for 2026–2027 are NOW OPEN",
+    "quote": "If God has destined you for university studies, you have to honor Him by putting in your very best efforts to achieve the results God expects of you.",
+    "quote_author": "— Prof. Zacharias Tanee Fomum"
+  },
+  "stats": {
+    "schools": "Schools",
+    "programs": "Programs",
+    "students": "Students",
+    "faculty": "Faculty Members",
+    "countries": "Countries Represented",
+    "founded": "Founded"
+  },
+  "about": {
+    "title": "About ZTF University Institute",
+    "mission_title": "Our Mission",
+    "mission": "To provide faith-integrated, academically excellent education that empowers students to become innovative leaders who serve God, Africa, and the world.",
+    "vision_title": "Our Vision",
+    "vision": "To be the leading Christian university in Central Africa, producing graduates who combine biblical values, professional excellence, and a heart for service.",
+    "values_title": "Our Core Values",
+    "values": ["Excellence", "Faith & Integrity", "Innovation", "Service", "Community", "Perseverance"],
+    "founder_title": "Our Founder",
+    "founder_bio": "Professor Zacharias Tanee Fomum (1945–2009) was one of Africa's greatest academic minds and spiritual leaders. He earned a first-class B.Sc. from Fourah Bay College (1969), a Ph.D. in Organic Chemistry from the University of Makerere, Uganda (at age 28), and a Doctor of Science from Durham University, Great Britain (2005) — one of the highest academic distinctions in the world. As Professor of Organic Chemistry at the University of Yaoundé I, he supervised over 100 doctoral and master's theses and co-authored more than 160 publications in top international journals, ranking his department second among all African scientific research centres in 2004. He was also the founder of Christian Missionary Fellowship International, with churches in over 130 countries, and authored more than 350 books with 10 million copies in 100+ languages.",
+    "history_title": "Our History",
+    "history": "ZTF University Institute was established in 2023 in Bertoua, Cameroon — the very land where Prof. ZTF lived and served. Built on the legacy of a man who believed education was an act of obedience to God, ZTF-UI seeks to raise the next generation of African scholars, professionals, and leaders who will transform the continent and the world.",
+    "leadership_title": "Our Leadership",
+    "accreditation_title": "Accreditation & Recognition",
+    "campus_title": "Our Campus"
+  },
+  "schools": {
+    "title": "Our Schools & Institutes",
+    "subtitle": "Seven schools of higher learning, two vocational training institutions, and an online learning programme — all grounded in faith and academic excellence.",
+    "university_schools": "Schools of Higher Learning",
+    "vocational": "ZTF Vocational Training Institutions",
+    "online": "Online / Distance Learning",
+    "view_programs": "View Programs",
+    "programs_count": "Programs",
+    "school_list": {
+      "agri": {
+        "name": "School of Agricultural Sciences & Biotechnology",
+        "desc": "Combines modern agricultural science with biotechnology to address African food security challenges."
+      },
+      "comm": {
+        "name": "School of Communication",
+        "desc": "Trains professional communicators, journalists, and media practitioners for African and global contexts."
+      },
+      "eng": {
+        "name": "School of Engineering & Applied Technology",
+        "desc": "Prepares engineers and technologists to drive industrial development across Africa."
+      },
+      "health": {
+        "name": "School of Health Sciences",
+        "desc": "Equips healthcare professionals with clinical skills and a heart for community health service."
+      },
+      "econ": {
+        "name": "School of Economics, Finance & Business Management",
+        "desc": "Trains future business leaders and entrepreneurs grounded in ethics and African economic realities."
+      },
+      "law": {
+        "name": "School of Law & Political Sciences",
+        "desc": "Develops legal minds and policy thinkers who will shape justice systems across Africa."
+      },
+      "hum": {
+        "name": "School of Humanities & Applied Social Sciences",
+        "desc": "Explores human culture, society, and social challenges through interdisciplinary methods."
+      },
+      "vti_dev": {
+        "name": "ZTF VTI for Sustainable Development",
+        "desc": "Vocational training in agronomy, communication, and applied technology for sustainable livelihoods."
+      },
+      "vti_hum": {
+        "name": "ZTF VTI for Human Sciences",
+        "desc": "Practical training in health sciences, applied economic sciences, law, and political sciences."
+      }
+    }
+  },
+  "programs": {
+    "title": "Academic Programs",
+    "subtitle": "Discover programs that combine excellence, faith, and African relevance.",
+    "filter_school": "Filter by School",
+    "filter_level": "Filter by Level",
+    "filter_mode": "Study Mode",
+    "all": "All",
+    "apply_program": "Apply for this Program",
+    "duration": "Duration",
+    "years": "years",
+    "year": "year",
+    "tuition": "Tuition (XAF)",
+    "online_badge": "Online",
+    "levels": {
+      "bachelor": "Bachelor",
+      "master": "Master",
+      "phd": "PhD",
+      "certificate": "Certificate",
+      "diploma": "Diploma",
+      "vocational": "Vocational"
+    }
+  },
+  "faculty": {
+    "title": "Faculty & Staff",
+    "subtitle": "Meet the dedicated academics and professionals shaping the next generation of African leaders.",
+    "publications": "Publications",
+    "specializations": "Specializations",
+    "qualifications": "Qualifications",
+    "join_cta": "Join Our Faculty",
+    "join_desc": "Are you passionate about faith-integrated academic excellence? We invite qualified academics to apply.",
+    "view_bio": "View Full Profile"
+  },
+  "research": {
+    "title": "Research Works",
+    "subtitle": "Advancing knowledge in science, humanities, and applied fields — rooted in the legacy of Prof. ZTF.",
+    "featured": "Featured Research",
+    "all_research": "All Research",
+    "filter_school": "Filter by School",
+    "filter_year": "Filter by Year",
+    "filter_category": "Category",
+    "search": "Search research...",
+    "download_pdf": "Download PDF",
+    "authors": "Authors",
+    "journal": "Journal",
+    "published": "Published",
+    "founder_legacy": "Founder's Research Legacy",
+    "submit": "Submit Research",
+    "stats": {
+      "publications": "Publications",
+      "researchers": "Active Researchers",
+      "projects": "Research Projects"
+    }
+  },
+  "admission": {
+    "title": "Admission & Registration",
+    "subtitle": "Begin your journey at ZTF University Institute — where faith meets academic excellence.",
+    "apply_title": "Apply for Admission",
+    "status_title": "Check Application Status",
+    "requirements_title": "Admission Requirements",
+    "steps_title": "Application Steps",
+    "step1": "Fill out the online application form",
+    "step2": "Upload required documents",
+    "step3": "Pay the application fee",
+    "step4": "Await review (7–14 business days)",
+    "step5": "Receive admission decision by email",
+    "step6": "Complete enrollment and pay tuition",
+    "requirements": {
+      "bac": "Secondary school certificate (Baccalauréat or equivalent)",
+      "transcript": "Official academic transcripts",
+      "photo": "Passport-size photograph",
+      "id": "National ID or passport copy",
+      "letter": "Motivation letter (optional)"
+    },
+    "form": {
+      "first_name": "First Name",
+      "last_name": "Last Name",
+      "dob": "Date of Birth",
+      "gender": "Gender",
+      "gender_male": "Male",
+      "gender_female": "Female",
+      "gender_other": "Other",
+      "nationality": "Nationality",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "whatsapp": "WhatsApp Number",
+      "address": "Home Address",
+      "city": "City",
+      "country": "Country",
+      "prev_school": "Previous School",
+      "qualification": "Highest Qualification",
+      "gpa": "GPA / Grade Average",
+      "program": "Program Applied For",
+      "school": "School / Institute",
+      "study_mode": "Study Mode",
+      "mode_campus": "On Campus",
+      "mode_online": "Online",
+      "mode_hybrid": "Hybrid",
+      "academic_year": "Academic Year",
+      "upload_cert": "Upload Certificate",
+      "upload_transcript": "Upload Transcript",
+      "upload_photo": "Upload Passport Photo",
+      "emergency_name": "Emergency Contact Name",
+      "emergency_phone": "Emergency Contact Phone",
+      "emergency_relation": "Relationship",
+      "agree_terms": "I agree to the Terms and Conditions",
+      "agree_privacy": "I agree to the Privacy Policy",
+      "submit": "Submit Application",
+      "next": "Next Step",
+      "back": "Back",
+      "submitting": "Submitting..."
+    },
+    "steps": {
+      "personal": "Personal Info",
+      "contact": "Contact",
+      "academic": "Academic Background",
+      "program": "Program Choice",
+      "emergency": "Emergency Contact",
+      "review": "Review & Submit"
+    },
+    "success": {
+      "title": "Application Submitted!",
+      "your_number": "Your application number is:",
+      "message": "A confirmation email has been sent to your email address. You will hear from us within 7–14 business days.",
+      "check_status": "Check your status at any time"
+    },
+    "status": {
+      "title": "Check Application Status",
+      "app_number": "Application Number",
+      "email": "Email Address",
+      "check": "Check Status",
+      "checking": "Checking...",
+      "not_found": "No application found with these details.",
+      "submitted": "Submitted",
+      "reviewed": "Reviewed",
+      "pending": "Pending",
+      "under_review": "Under Review",
+      "accepted": "Accepted",
+      "rejected": "Rejected",
+      "waitlisted": "Waitlisted",
+      "enrolled": "Enrolled"
+    }
+  },
+  "gallery": {
+    "title": "Media Gallery",
+    "subtitle": "Life at ZTF University Institute — campus, students, events, and more.",
+    "categories": {
+      "all": "All",
+      "campus": "Campus",
+      "students": "Students",
+      "events": "Events",
+      "labs": "Labs",
+      "classrooms": "Classrooms",
+      "graduation": "Graduation",
+      "sports": "Sports",
+      "other": "Other"
+    }
+  },
+  "blog": {
+    "title": "News & Blog",
+    "subtitle": "Stay informed about university news, academic insights, and student life.",
+    "categories": {
+      "all": "All",
+      "news": "University News",
+      "student_life": "Student Life",
+      "academic": "Academic Insights",
+      "faith": "Faith & Learning",
+      "africa": "Cameroon & Africa"
+    },
+    "read_more": "Read More",
+    "related": "Related Articles",
+    "share": "Share",
+    "subscribe": "Subscribe to Newsletter",
+    "subscribe_desc": "Get the latest news and updates from ZTF University Institute.",
+    "your_email": "Your email address",
+    "subscribe_btn": "Subscribe"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We'd love to hear from you. Reach out to our team in Bertoua, Cameroon.",
+    "address": "Koume – Bertoua, East Region, Cameroon",
+    "phones": "(+237) 679 42 47 10 | 691 45 96 11 | 690 35 53 29 | 699 99 31 47",
+    "email": "info@ztfuniversity.com",
+    "email2": "ztfuniversityinstitute@gmail.com",
+    "hours": "Monday – Friday: 7:30 AM – 5:00 PM",
+    "whatsapp": "WhatsApp Us",
+    "directions": "How to Reach Us",
+    "directions_desc": "ZTF University Institute is located in the Koume district of Bertoua, East Region, Cameroon. From Yaoundé, take the national highway east toward Bertoua (approx. 350 km). The campus is accessible by bus, taxi, and private vehicle.",
+    "form": {
+      "name": "Your Name",
+      "email": "Email Address",
+      "phone": "Phone Number (optional)",
+      "subject": "Subject",
+      "message": "Your Message",
+      "send": "Send Message",
+      "sending": "Sending...",
+      "success": "Your message has been sent! We'll reply within 2–3 business days.",
+      "error": "Something went wrong. Please try again or contact us directly."
+    }
+  },
+  "footer": {
+    "tagline": "Empowering World Innovators and Leaders",
+    "description": "A faith-integrated Christian university located in Bertoua, Cameroon — raising the next generation of African leaders.",
+    "quick_links": "Quick Links",
+    "contact_info": "Contact Information",
+    "follow_us": "Follow Us",
+    "rights": "© 2023–2025 ZTF University Institute. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions"
+  },
+  "common": {
+    "learn_more": "Learn More",
+    "view_all": "View All",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "no_results": "No results found",
+    "apply_now": "Apply Now",
+    "download": "Download",
+    "close": "Close",
+    "open": "Open",
+    "search": "Search"
+  },
+  "why_ztf": {
+    "title": "Why Choose ZTF University Institute?",
+    "faith": {
+      "title": "Faith-Integrated Learning",
+      "desc": "Every discipline is taught through the lens of Christian values and biblical wisdom, preparing whole persons."
+    },
+    "excellence": {
+      "title": "Academic Excellence",
+      "desc": "Built on the legacy of Prof. ZTF — a man whose 160+ publications ranked Africa's best — excellence is in our DNA."
+    },
+    "african": {
+      "title": "African Context",
+      "desc": "Our programs are tailored to address African challenges, opportunities, and the unique calling of this continent."
+    },
+    "global": {
+      "title": "Global Vision",
+      "desc": "We train graduates who think globally, collaborate internationally, and carry African wisdom to the world."
+    }
+  },
+  "online": {
+    "title": "Study Online from Anywhere",
+    "desc": "ZTF University Institute offers flexible distance learning programmes for students across Africa and the diaspora.",
+    "cta": "Explore Online Programs"
+  }
+}
