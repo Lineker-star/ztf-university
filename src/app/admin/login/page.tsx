@@ -85,7 +85,7 @@ export default function AdminLoginPage() {
     if (!email || !email.includes('@')) { setError('Enter a valid email address.'); return; }
     setLoading(true); clearError();
     try {
-      const res = await fetch('/api/cms-admin/check-email', {
+      const res = await fetch('/api/auth/check-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.trim().toLowerCase() }),
@@ -98,7 +98,7 @@ export default function AdminLoginPage() {
         setStage('totp-verify');
       } else {
         // First time — generate TOTP secret + QR code
-        const setupRes = await fetch('/api/cms-admin/setup-totp', {
+        const setupRes = await fetch('/api/auth/setup-totp', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: email.trim().toLowerCase() }),
@@ -120,7 +120,7 @@ export default function AdminLoginPage() {
     if (code.length !== 6 || !/^\d+$/.test(code)) { setError('Enter the 6-digit code from Google Authenticator.'); return; }
     setLoading(true); clearError();
     try {
-      const res = await fetch('/api/cms-admin/verify-totp', {
+      const res = await fetch('/api/auth/verify-totp', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
