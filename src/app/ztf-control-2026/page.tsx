@@ -91,14 +91,14 @@ export default function AdminDashboard() {
   }, []);
 
   const statCards = [
-    { label: 'Total Applications', value: stats.total_applications, icon: FileText, color: 'bg-blue-500', href: '/admin/admissions' },
-    { label: 'Pending Review', value: stats.pending, icon: Clock, color: 'bg-yellow-500', href: '/admin/admissions?status=pending' },
-    { label: 'Accepted', value: stats.accepted, icon: CheckCircle, color: 'bg-green-500', href: '/admin/admissions?status=accepted' },
-    { label: 'Faculty Members', value: stats.faculty_count || 8, icon: Users, color: 'bg-indigo-500', href: '/admin/faculty' },
-    { label: 'Blog Posts', value: stats.blog_posts || 6, icon: BookOpen, color: 'bg-purple-500', href: '/admin/blog' },
-    { label: 'Gallery Images', value: stats.gallery_images || 6, icon: Image, color: 'bg-pink-500', href: '/admin/gallery' },
-    { label: 'Unread Messages', value: stats.unread_messages, icon: MessageSquare, color: 'bg-red-500', href: '/admin/contact' },
-    { label: 'Enrolled Students', value: stats.enrolled, icon: GraduationCap, color: 'bg-teal-500', href: '/admin/admissions?status=enrolled' },
+    { label: 'Total Applications', value: stats.total_applications, icon: FileText, color: 'bg-blue-500', href: '/ztf-control-2026/admissions' },
+    { label: 'Pending Review', value: stats.pending, icon: Clock, color: 'bg-yellow-500', href: '/ztf-control-2026/admissions?status=pending' },
+    { label: 'Accepted', value: stats.accepted, icon: CheckCircle, color: 'bg-green-500', href: '/ztf-control-2026/admissions?status=accepted' },
+    { label: 'Faculty Members', value: stats.faculty_count || 8, icon: Users, color: 'bg-indigo-500', href: '/ztf-control-2026/faculty' },
+    { label: 'Blog Posts', value: stats.blog_posts || 6, icon: BookOpen, color: 'bg-purple-500', href: '/ztf-control-2026/blog' },
+    { label: 'Gallery Images', value: stats.gallery_images || 6, icon: Image, color: 'bg-pink-500', href: '/ztf-control-2026/gallery' },
+    { label: 'Unread Messages', value: stats.unread_messages, icon: MessageSquare, color: 'bg-red-500', href: '/ztf-control-2026/contact' },
+    { label: 'Enrolled Students', value: stats.enrolled, icon: GraduationCap, color: 'bg-teal-500', href: '/ztf-control-2026/admissions?status=enrolled' },
   ];
 
   return (
@@ -109,10 +109,10 @@ export default function AdminDashboard() {
           <p className="text-gray-500 text-sm mt-1">Welcome back. Here&apos;s what&apos;s happening at ZTF University.</p>
         </div>
         <div className="hidden sm:flex gap-2">
-          <Link href="/admin/admissions" className="flex items-center gap-1 bg-[#0A1628] text-white text-xs font-bold px-4 py-2 rounded-xl hover:bg-[#C9A84C] hover:text-[#0A1628] transition">
+          <Link href="/ztf-control-2026/admissions" className="flex items-center gap-1 bg-[#0A1628] text-white text-xs font-bold px-4 py-2 rounded-xl hover:bg-[#C9A84C] hover:text-[#0A1628] transition">
             <Plus className="w-3.5 h-3.5" /> New Admission
           </Link>
-          <Link href="/admin/blog" className="flex items-center gap-1 border border-gray-200 text-gray-600 text-xs font-bold px-4 py-2 rounded-xl hover:border-[#C9A84C] transition">
+          <Link href="/ztf-control-2026/blog" className="flex items-center gap-1 border border-gray-200 text-gray-600 text-xs font-bold px-4 py-2 rounded-xl hover:border-[#C9A84C] transition">
             <Plus className="w-3.5 h-3.5" /> New Post
           </Link>
         </div>
@@ -165,7 +165,7 @@ export default function AdminDashboard() {
               </div>
             ))}
           </div>
-          <Link href="/admin/admissions" className="mt-4 inline-flex items-center gap-1 text-xs text-[#C9A84C] font-bold hover:underline">
+          <Link href="/ztf-control-2026/admissions" className="mt-4 inline-flex items-center gap-1 text-xs text-[#C9A84C] font-bold hover:underline">
             Manage All Applications →
           </Link>
         </div>
@@ -175,12 +175,12 @@ export default function AdminDashboard() {
           <h3 className="font-bold text-[#0A1628] font-heading mb-4">Quick Actions</h3>
           <div className="grid grid-cols-2 gap-3">
             {[
-              { icon: '📝', label: 'New Blog Post', href: '/admin/blog' },
-              { icon: '🖼️', label: 'Upload Images', href: '/admin/gallery' },
-              { icon: '👨‍🏫', label: 'Add Faculty', href: '/admin/faculty' },
-              { icon: '📋', label: 'View Applications', href: '/admin/admissions' },
-              { icon: '🏛️', label: 'Manage Institutes', href: '/admin/institutes' },
-              { icon: '🔬', label: 'Research', href: '/admin/research' },
+              { icon: '📝', label: 'New Blog Post', href: '/ztf-control-2026/blog' },
+              { icon: '🖼️', label: 'Upload Images', href: '/ztf-control-2026/gallery' },
+              { icon: '👨‍🏫', label: 'Add Faculty', href: '/ztf-control-2026/faculty' },
+              { icon: '📋', label: 'View Applications', href: '/ztf-control-2026/admissions' },
+              { icon: '🏛️', label: 'Manage Institutes', href: '/ztf-control-2026/institutes' },
+              { icon: '🔬', label: 'Research', href: '/ztf-control-2026/research' },
             ].map(a => (
               <Link key={a.label} href={a.href}
                 className="flex items-center gap-2 p-3 bg-gray-50 rounded-xl hover:bg-[#C9A84C]/10 hover:border-[#C9A84C] border border-transparent transition text-sm font-semibold text-[#0A1628]">
@@ -189,7 +189,7 @@ export default function AdminDashboard() {
               </Link>
             ))}
           </div>
-          <Link href="/admin/admissions"
+          <Link href="/ztf-control-2026/admissions"
             className="mt-4 flex items-center gap-2 text-xs text-gray-500 hover:text-[#C9A84C] transition">
             <Download className="w-3.5 h-3.5" /> Export All Applications to Excel
           </Link>
@@ -201,7 +201,7 @@ export default function AdminDashboard() {
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
           <div className="p-5 border-b border-gray-100 flex items-center justify-between">
             <h3 className="font-bold text-[#0A1628] font-heading">Recent Applications</h3>
-            <Link href="/admin/admissions" className="text-xs text-[#C9A84C] font-bold hover:underline">View All</Link>
+            <Link href="/ztf-control-2026/admissions" className="text-xs text-[#C9A84C] font-bold hover:underline">View All</Link>
           </div>
           {loading ? (
             <div className="p-8 text-center text-gray-400 text-sm">Loading...</div>
@@ -231,7 +231,7 @@ export default function AdminDashboard() {
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
           <div className="p-5 border-b border-gray-100 flex items-center justify-between">
             <h3 className="font-bold text-[#0A1628] font-heading">Recent Messages</h3>
-            <Link href="/admin/contact" className="text-xs text-[#C9A84C] font-bold hover:underline">View All</Link>
+            <Link href="/ztf-control-2026/contact" className="text-xs text-[#C9A84C] font-bold hover:underline">View All</Link>
           </div>
           {loading ? (
             <div className="p-8 text-center text-gray-400 text-sm">Loading...</div>

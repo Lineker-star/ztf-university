@@ -138,13 +138,21 @@ function ApplicationFormInner() {
     if (valid) setStep(s => s + 1);
   };
 
-  const uploadFile = async (file: File, path: string): Promise<string> => {
+  const [submitError, setSubmitError] = useState('');
+
+  const uploadFile = async (file: File, folder: string): Promise<string> => {
     try {
       const supabase = createClientClient();
-      const { data } = await supabase.storage
+      const fileExt = file.name.split('.').pop();
+      const fileName = `${folder}/${Date.now()}.${fileExt}`;
+      const { data, error } = await supabase.storage
         .from('application-documents')
-        .upload(`applications/${Date.now()}_${file.name}`, file);
-      return data?.path || '';
+        .upload(fileName, file, { upsert: true });
+      if (error || !data) return '';
+      const { data: { publicUrl } } = supabase.storage
+        .from('application-documents')
+        .getPublicUrl(fileName);
+      return publicUrl;
     } catch {
       return '';
     }
@@ -152,6 +160,7 @@ function ApplicationFormInner() {
 
   const onSubmit = async (data: ApplicationFormData) => {
     setIsSubmitting(true);
+    setSubmitError('');
     try {
       const supabase = createClientClient();
 
@@ -161,40 +170,45 @@ function ApplicationFormInner() {
         idFile ? uploadFile(idFile, 'ids') : Promise.resolve(''),
       ]);
 
+      const applicationData = {
+        first_name: data.first_name,
+        last_name: data.last_name,
+        date_of_birth: data.date_of_birth,
+        gender: data.gender,
+        nationality: data.nationality || 'Cameroonian',
+        email: data.email,
+        phone: data.phone,
+        whatsapp: data.whatsapp || data.phone,
+        address: data.address || '',
+        city: data.city || 'Bertoua',
+        country: data.country || 'Cameroon',
+        previous_school: data.previous_school,
+        highest_qualification: data.highest_qualification,
+        program_applied: data.program_applied,
+        school_applied: data.school_applied,
+        study_mode: data.study_mode || 'on-campus',
+        academic_year: '2026-2027',
+        emergency_name: data.emergency_name || '',
+        emergency_phone: data.emergency_phone || '',
+        emergency_relation: data.emergency_relation || '',
+        agreed_to_terms: true,
+        agreed_to_privacy: true,
+        status: 'pending',
+        photo_url: photoUrl,
+        certificate_url: certUrl,
+        id_url: idUrl,
+      };
+
       const { data: app, error } = await supabase
         .from('applications')
-        .insert({
-          first_name: data.first_name,
-          last_name: data.last_name,
-          date_of_birth: data.date_of_birth,
-          gender: data.gender,
-          nationality: data.nationality,
-          email: data.email,
-          phone: data.phone,
-          whatsapp: data.whatsapp || data.phone,
-          address: data.address,
-          city: data.city || 'Bertoua',
-          country: data.country || 'Cameroon',
-          previous_school: data.previous_school,
-          highest_qualification: data.highest_qualification,
-          program_applied: data.program_applied,
-          school_applied: data.school_applied,
-          study_mode: data.study_mode || 'on-campus',
-          academic_year: '2026-2027',
-          emergency_name: data.emergency_name,
-          emergency_phone: data.emergency_phone,
-          emergency_relation: data.emergency_relation,
-          agreed_to_terms: data.agreed_to_terms,
-          agreed_to_privacy: data.agreed_to_privacy,
-          status: 'pending',
-          photo_url: photoUrl,
-          certificate_url: certUrl,
-          national_id: idUrl,
-        })
-        .select('application_number')
+        .insert(applicationData)
+        .select('application_number, id')
         .single();
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase error:', error);
+        throw new Error(error.message);
+      }
 
       setSubmitResult({
         number: app.application_number,
@@ -204,17 +218,25 @@ function ApplicationFormInner() {
         email: data.email,
       });
 
-      // Send confirmation email
-      await fetch('/api/send-confirmation', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: data.email, name: data.first_name, application_number: app.application_number }),
-      });
+      // Send confirmation email (non-fatal)
+      try {
+        await fetch('/api/send-confirmation', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: data.email, name: data.first_name, application_number: app.application_number }),
+        });
+      } catch (emailError) {
+        console.error('Email error (non-fatal):', emailError);
+      }
 
       setStep(STEPS_KEYS.length);
-    } catch (err) {
-      console.error('Submission error:', err);
-      alert(isFr ? 'Erreur lors de la soumission. Veuillez réessayer.' : 'Submission failed. Please try again.');
+    } catch (err: unknown) {
+      console.error('Submit error:', err);
+      setSubmitError(
+        isFr
+          ? 'Erreur lors de la soumission. Vérifiez votre connexion et réessayez.'
+          : 'Submission failed. Please check your connection and try again.'
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -469,6 +491,13 @@ function ApplicationFormInner() {
               </label>
               {errors.agreed_to_privacy && <p className="text-red-500 text-xs">{errors.agreed_to_privacy.message}</p>}
             </div>
+          </div>
+        )}
+
+        {/* Submit error */}
+        {submitError && (
+          <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm">
+            {submitError}
           </div>
         )}
 

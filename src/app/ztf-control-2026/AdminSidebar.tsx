@@ -4,12 +4,12 @@ import { usePathname } from 'next/navigation';
 import { GraduationCap, LayoutDashboard, FileText, Users, Image, BookOpen, MessageSquare, Settings, LogOut } from 'lucide-react';
 
 const NAV = [
-  { href: '/admin', label: 'Dashboard', icon: LayoutDashboard },
-  { href: '/admin/applications', label: 'Applications', icon: FileText },
-  { href: '/admin/faculty', label: 'Faculty', icon: Users },
-  { href: '/admin/blog', label: 'Blog Posts', icon: BookOpen },
-  { href: '/admin/gallery', label: 'Gallery', icon: Image },
-  { href: '/admin/messages', label: 'Messages', icon: MessageSquare },
+  { href: '/ztf-control-2026', label: 'Dashboard', icon: LayoutDashboard },
+  { href: '/ztf-control-2026/applications', label: 'Applications', icon: FileText },
+  { href: '/ztf-control-2026/faculty', label: 'Faculty', icon: Users },
+  { href: '/ztf-control-2026/blog', label: 'Blog Posts', icon: BookOpen },
+  { href: '/ztf-control-2026/gallery', label: 'Gallery', icon: Image },
+  { href: '/ztf-control-2026/messages', label: 'Messages', icon: MessageSquare },
 ];
 
 export default function AdminSidebar() {
@@ -32,7 +32,7 @@ export default function AdminSidebar() {
       <nav className="flex-1 p-4 space-y-1">
         {NAV.map(item => {
           const Icon = item.icon;
-          const isActive = pathname === item.href || (item.href !== '/admin' && pathname.startsWith(item.href));
+          const isActive = pathname === item.href || (item.href !== '/ztf-control-2026' && pathname.startsWith(item.href));
           return (
             <Link
               key={item.href}

@@ -61,7 +61,15 @@ export default function AdminContactPage() {
     setLoading(false);
   }, [supabase]);
 
-  useEffect(() => { load(); }, [load]);
+  useEffect(() => {
+    load();
+    // Real-time subscription for new messages
+    const channel = supabase
+      .channel('contact_messages_rt')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'contact_messages' }, () => load())
+      .subscribe();
+    return () => { supabase.removeChannel(channel); };
+  }, [load]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Auto-mark as read when side panel opens
   useEffect(() => {

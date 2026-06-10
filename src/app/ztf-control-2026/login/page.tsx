@@ -1,5 +1,8 @@
+// To reset password: Go to Supabase Dashboard → Authentication → Users
+// Find info@ztfuniversity.com → Click "Send password reset" or manually update password in Supabase Auth
 'use client';
 import { useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -101,7 +104,7 @@ export default function AdminLoginPage() {
         setError('Incorrect password. Please try again.');
       } else {
         setStage('success');
-        setTimeout(() => router.push('/admin'), 1200);
+        setTimeout(() => router.push('/ztf-control-2026'), 1200);
       }
     } catch {
       setError('Sign-in failed. Please try again.');
@@ -213,6 +216,11 @@ export default function AdminLoginPage() {
                     {loading ? 'Signing in…' : 'Sign In to Admin'}
                     {!loading && <ArrowRight className="w-4 h-4" />}
                   </button>
+                  <p className="text-center text-xs text-gray-600 mt-2">
+                    <Link href="/ztf-control-2026/login/reset" className="hover:text-gray-400 transition">
+                      Forgot password?
+                    </Link>
+                  </p>
                 </div>
               </motion.div>
             )}

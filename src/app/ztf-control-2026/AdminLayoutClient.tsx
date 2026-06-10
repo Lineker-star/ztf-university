@@ -6,27 +6,27 @@ import { useRouter, usePathname } from 'next/navigation';
 import { Menu, X, LogOut, ChevronRight } from 'lucide-react';
 
 const SIDEBAR_ITEMS = [
-  { icon: '📊', label: 'Dashboard', href: '/admin' },
-  { icon: '🏠', label: 'Home Page', href: '/admin/home' },
-  { icon: '🌐', label: 'Site Settings', href: '/admin/settings' },
-  { icon: '🖼️', label: 'Hero Sections', href: '/admin/hero' },
-  { icon: 'ℹ️', label: 'About Page', href: '/admin/about' },
+  { icon: '📊', label: 'Dashboard', href: '/ztf-control-2026' },
+  { icon: '🏠', label: 'Home Page', href: '/ztf-control-2026/home' },
+  { icon: '🌐', label: 'Site Settings', href: '/ztf-control-2026/settings' },
+  { icon: '🖼️', label: 'Hero Sections', href: '/ztf-control-2026/hero' },
+  { icon: 'ℹ️', label: 'About Page', href: '/ztf-control-2026/about' },
   { divider: true, label: 'ACADEMIC' },
-  { icon: '🏛️', label: 'Institutes', href: '/admin/institutes' },
-  { icon: '🏫', label: 'Schools', href: '/admin/schools' },
-  { icon: '📚', label: 'Programs & Fees', href: '/admin/programs' },
-  { icon: '👨‍🏫', label: 'Faculty & Staff', href: '/admin/faculty' },
-  { icon: '🔬', label: 'Research', href: '/admin/research' },
+  { icon: '🏛️', label: 'Institutes', href: '/ztf-control-2026/institutes' },
+  { icon: '🏫', label: 'Schools', href: '/ztf-control-2026/schools' },
+  { icon: '📚', label: 'Programs & Fees', href: '/ztf-control-2026/programs' },
+  { icon: '👨‍🏫', label: 'Faculty & Staff', href: '/ztf-control-2026/faculty' },
+  { icon: '🔬', label: 'Research', href: '/ztf-control-2026/research' },
   { divider: true, label: 'STUDENTS' },
-  { icon: '📋', label: 'Admissions', href: '/admin/admissions' },
+  { icon: '📋', label: 'Admissions', href: '/ztf-control-2026/admissions' },
   { divider: true, label: 'CONTENT' },
-  { icon: '🖼️', label: 'Gallery', href: '/admin/gallery' },
-  { icon: '📝', label: 'Blog Posts', href: '/admin/blog' },
-  { icon: '📺', label: 'Media', href: '/admin/media' },
-  { icon: '📢', label: 'Announcements', href: '/admin/announcements' },
+  { icon: '🖼️', label: 'Gallery', href: '/ztf-control-2026/gallery' },
+  { icon: '📝', label: 'Blog Posts', href: '/ztf-control-2026/blog' },
+  { icon: '📺', label: 'Media', href: '/ztf-control-2026/media' },
+  { icon: '📢', label: 'Announcements', href: '/ztf-control-2026/announcements' },
   { divider: true, label: 'SYSTEM' },
-  { icon: '✉️', label: 'Contact Messages', href: '/admin/contact' },
-  { icon: '👥', label: 'Admin Users', href: '/admin/users' },
+  { icon: '✉️', label: 'Contact Messages', href: '/ztf-control-2026/contact' },
+  { icon: '👥', label: 'Admin Users', href: '/ztf-control-2026/users' },
 ];
 
 export default function AdminLayoutClient({ children }: { children: React.ReactNode }) {
@@ -35,8 +35,8 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
   const pathname = usePathname();
   const router = useRouter();
 
-  // Skip auth layout for login page
-  const isLoginPage = pathname === '/admin/login';
+  // Skip auth layout for login and reset pages
+  const isLoginPage = pathname === '/ztf-control-2026/login' || pathname === '/ztf-control-2026/login/reset';
 
   useEffect(() => {
     if (isLoginPage) return;
@@ -47,7 +47,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
         const supabase = createClientClient();
         const { data: { user } } = await supabase.auth.getUser();
         if (!user) {
-          router.push('/admin/login');
+          router.push('/ztf-control-2026/login');
         } else {
           setAdminEmail(user.email || '');
         }
@@ -65,7 +65,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
       const supabase = createClientClient();
       await supabase.auth.signOut();
     } catch { /* ignore */ }
-    router.push('/admin/login');
+    router.push('/ztf-control-2026/login');
   };
 
   if (isLoginPage) {
@@ -108,7 +108,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
               );
             }
             const itemHref = 'href' in item ? item.href : '';
-            const isActive = 'href' in item && (pathname === itemHref || (itemHref !== '/admin' && !!itemHref && !!pathname && pathname.startsWith(itemHref)));
+            const isActive = 'href' in item && (pathname === itemHref || (itemHref !== '/ztf-control-2026' && !!itemHref && !!pathname && pathname.startsWith(itemHref)));
             return (
               <Link key={itemHref || i} href={itemHref || '#'}
                 onClick={() => setSidebarOpen(false)}
@@ -153,7 +153,7 @@ export default function AdminLayoutClient({ children }: { children: React.ReactN
           {/* Breadcrumb */}
           <div className="flex items-center gap-1 text-sm text-gray-500 hidden sm:flex">
             <span>Admin</span>
-            {pathname !== '/admin' && (
+            {pathname !== '/ztf-control-2026' && (
               <>
                 <ChevronRight className="w-3 h-3" />
                 <span className="text-[#0A1628] font-semibold capitalize">

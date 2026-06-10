@@ -1,4 +1,4 @@
-import AdminApplicationsClient from './AdminApplicationsClient';
+﻿import AdminApplicationsClient from './AdminApplicationsClient';
 
 export default function AdminApplicationsPage() {
   return (

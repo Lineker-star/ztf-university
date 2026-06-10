@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { Search, Download, X, Check, ChevronRight, Clock, Eye, CheckCircle, XCircle, PauseCircle, GraduationCap, RefreshCw } from 'lucide-react';
+import { Search, X, Check, ChevronRight, Clock, Eye, CheckCircle, XCircle, PauseCircle, GraduationCap, RefreshCw } from 'lucide-react';
 
 type Application = {
   id: string;
@@ -62,7 +62,12 @@ export default function AdminAdmissionsPage() {
     finally { setLoading(false); }
   };
 
-  useEffect(() => { loadApplications(); }, []);
+  useEffect(() => {
+    loadApplications();
+    // Real-time: poll every 30s as fallback, and use Supabase realtime when available
+    const interval = setInterval(loadApplications, 30000);
+    return () => clearInterval(interval);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const schools = ['all', ...Array.from(new Set(applications.map(a => a.school_applied)))];
 
@@ -98,38 +103,152 @@ export default function AdminAdmissionsPage() {
     } catch { } finally { setUpdating(false); }
   };
 
+  const toExport = () => selectedIds.size > 0 ? applications.filter(a => selectedIds.has(a.id)) : filtered;
+
   const exportToExcel = async () => {
     try {
       const XLSX = await import('xlsx');
-      const toExport = selectedIds.size > 0 ? applications.filter(a => selectedIds.has(a.id)) : filtered;
-      const data = toExport.map(app => ({
-        'Application Number': app.application_number,
-        'First Name': app.first_name,
-        'Last Name': app.last_name,
-        'Email': app.email,
-        'Phone': app.phone,
+      const list = toExport();
+      const data = list.map((app, index) => ({
+        'No.': index + 1,
+        'Application Number': app.application_number || '',
+        'First Name': app.first_name || '',
+        'Last Name': app.last_name || '',
+        'Full Name': `${app.first_name} ${app.last_name}`,
+        'Email': app.email || '',
+        'Phone': app.phone || '',
         'WhatsApp': app.whatsapp || '',
-        'Date of Birth': app.date_of_birth,
-        'Gender': app.gender,
-        'Nationality': app.nationality,
+        'Date of Birth': app.date_of_birth || '',
+        'Gender': app.gender || '',
+        'Nationality': app.nationality || '',
         'Address': app.address || '',
         'Previous School': app.previous_school || '',
-        'Qualification': app.highest_qualification || '',
-        'Program Applied': app.program_applied,
-        'School/Institute': app.school_applied,
-        'Study Mode': app.study_mode,
-        'Academic Year': app.academic_year,
-        'Status': app.status,
-        'Submitted': new Date(app.created_at).toLocaleDateString(),
+        'Highest Qualification': app.highest_qualification || '',
+        'Program Applied': app.program_applied || '',
+        'School/Institute': app.school_applied || '',
+        'Study Mode': app.study_mode || '',
+        'Academic Year': app.academic_year || '2026-2027',
         'Emergency Contact': app.emergency_name || '',
         'Emergency Phone': app.emergency_phone || '',
+        'Status': app.status || 'pending',
+        'Submitted Date': app.created_at ? new Date(app.created_at).toLocaleDateString('fr-FR') : '',
         'Notes': app.notes || '',
       }));
       const ws = XLSX.utils.json_to_sheet(data);
+      ws['!cols'] = [
+        { wch: 5 }, { wch: 20 }, { wch: 15 }, { wch: 15 }, { wch: 25 },
+        { wch: 30 }, { wch: 15 }, { wch: 15 }, { wch: 12 }, { wch: 10 },
+        { wch: 15 }, { wch: 25 }, { wch: 25 }, { wch: 20 }, { wch: 30 },
+        { wch: 30 }, { wch: 15 }, { wch: 12 }, { wch: 20 }, { wch: 15 },
+        { wch: 12 }, { wch: 20 }, { wch: 30 },
+      ];
       const wb = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(wb, ws, 'Applications');
+      XLSX.utils.book_append_sheet(wb, ws, 'Applications ZTF 2026-2027');
       XLSX.writeFile(wb, `ZTF_Applications_${new Date().toISOString().split('T')[0]}.xlsx`);
-    } catch (e) { alert('Export failed: ' + e); }
+    } catch (e) { console.error('Export failed:', e); }
+  };
+
+  const exportToPDF = async () => {
+    try {
+      const { default: jsPDF } = await import('jspdf');
+      const { default: autoTable } = await import('jspdf-autotable');
+      const list = toExport();
+      const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+      doc.setFillColor(10, 22, 40);
+      doc.rect(0, 0, 297, 25, 'F');
+      doc.setTextColor(201, 168, 76);
+      doc.setFontSize(16);
+      doc.setFont('helvetica', 'bold');
+      doc.text('ZTF UNIVERSITY INSTITUTE', 148, 10, { align: 'center' });
+      doc.setFontSize(10);
+      doc.setTextColor(255, 255, 255);
+      doc.text('Applications Report — Academic Year 2026-2027', 148, 18, { align: 'center' });
+      doc.setFontSize(8);
+      doc.setTextColor(100, 100, 100);
+      doc.text(`Generated: ${new Date().toLocaleDateString('fr-FR')} | Total: ${list.length} applications`, 148, 30, { align: 'center' });
+      const tableData = list.map((app, i) => [
+        i + 1,
+        app.application_number || '-',
+        `${app.first_name} ${app.last_name}`,
+        app.email || '-',
+        app.phone || '-',
+        app.program_applied || '-',
+        (app.school_applied || '-').substring(0, 15),
+        (app.status || 'pending').toUpperCase(),
+        app.created_at ? new Date(app.created_at).toLocaleDateString('fr-FR') : '-',
+      ]);
+      autoTable(doc, {
+        startY: 35,
+        head: [['#', 'App. No.', 'Full Name', 'Email', 'Phone', 'Program', 'School', 'Status', 'Date']],
+        body: tableData,
+        headStyles: { fillColor: [10, 22, 40], textColor: [201, 168, 76], fontStyle: 'bold', fontSize: 8 },
+        bodyStyles: { fontSize: 7 },
+        alternateRowStyles: { fillColor: [245, 245, 245] },
+        margin: { top: 35, left: 10, right: 10 },
+      });
+      const pageCount = doc.getNumberOfPages();
+      for (let i = 1; i <= pageCount; i++) {
+        doc.setPage(i);
+        doc.setFontSize(7);
+        doc.setTextColor(150, 150, 150);
+        doc.text(`ZTF University Institute | Koumé, Bertoua, Cameroon | Page ${i} of ${pageCount}`, 148, doc.internal.pageSize.height - 5, { align: 'center' });
+      }
+      doc.save(`ZTF_Applications_${new Date().toISOString().split('T')[0]}.pdf`);
+    } catch (e) { console.error('PDF export failed:', e); }
+  };
+
+  const exportToWord = async () => {
+    try {
+      const { Document, Packer, Paragraph, Table, TableRow, TableCell, TextRun, HeadingLevel, AlignmentType, WidthType } = await import('docx');
+      const list = toExport();
+      const headers = ['#', 'App Number', 'Full Name', 'Email', 'Phone', 'Program', 'School', 'Status', 'Date'];
+      const tableRows = [
+        new TableRow({
+          children: headers.map(header =>
+            new TableCell({
+              children: [new Paragraph({ children: [new TextRun({ text: header, bold: true, color: 'C9A84C', size: 18 })] })],
+              shading: { fill: '0A1628' },
+            })
+          ),
+        }),
+        ...list.map((app, i) =>
+          new TableRow({
+            children: [
+              String(i + 1),
+              app.application_number || '-',
+              `${app.first_name} ${app.last_name}`,
+              app.email || '-',
+              app.phone || '-',
+              app.program_applied || '-',
+              app.school_applied || '-',
+              app.status || 'pending',
+              app.created_at ? new Date(app.created_at).toLocaleDateString('fr-FR') : '-',
+            ].map(text =>
+              new TableCell({ children: [new Paragraph({ children: [new TextRun({ text, size: 18 })] })] })
+            ),
+          })
+        ),
+      ];
+      const doc = new Document({
+        sections: [{
+          children: [
+            new Paragraph({ text: 'ZTF UNIVERSITY INSTITUTE', heading: HeadingLevel.HEADING_1, alignment: AlignmentType.CENTER }),
+            new Paragraph({ text: 'Applications Report — Academic Year 2026-2027', alignment: AlignmentType.CENTER }),
+            new Paragraph({ text: `Generated: ${new Date().toLocaleDateString('fr-FR')} | Total: ${list.length}`, alignment: AlignmentType.CENTER }),
+            new Paragraph({ text: '' }),
+            new Table({ rows: tableRows, width: { size: 100, type: WidthType.PERCENTAGE } }),
+          ],
+        }],
+      });
+      const buffer = await Packer.toBuffer(doc);
+      const blob = new Blob([new Uint8Array(buffer)], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `ZTF_Applications_${new Date().toISOString().split('T')[0]}.docx`;
+      a.click();
+      URL.revokeObjectURL(url);
+    } catch (e) { console.error('Word export failed:', e); }
   };
 
   const toggleSelect = (id: string) => {
@@ -142,20 +261,29 @@ export default function AdminAdmissionsPage() {
 
   return (
     <div>
-      <div className="mb-6 flex items-center justify-between">
-        <div>
-          <h1 className="text-2xl font-bold text-[#0A1628] font-heading">Admissions Manager</h1>
-          <p className="text-gray-500 text-sm mt-1">{applications.length} total applications</p>
-        </div>
-        <div className="flex gap-2">
+      <div className="mb-6">
+        <div className="flex items-center justify-between mb-4">
+          <div>
+            <h1 className="text-2xl font-bold text-[#0A1628] font-heading">Admissions Manager</h1>
+            <p className="text-gray-500 text-sm mt-1">{applications.length} total applications</p>
+          </div>
           <button onClick={loadApplications} className="p-2 border border-gray-200 rounded-xl hover:bg-gray-50 transition">
             <RefreshCw className="w-4 h-4 text-gray-500" />
           </button>
-          <button onClick={exportToExcel}
-            className="flex items-center gap-2 bg-[#0A1628] text-white text-sm font-bold px-4 py-2 rounded-xl hover:bg-[#C9A84C] hover:text-[#0A1628] transition">
-            <Download className="w-4 h-4" />
-            Export {selectedIds.size > 0 ? `(${selectedIds.size})` : 'All'} to Excel
+        </div>
+        <div className="flex gap-3 flex-wrap">
+          <button onClick={exportToExcel} className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 text-sm font-bold transition">
+            📊 Export Excel {selectedIds.size > 0 ? `(${selectedIds.size})` : ''}
           </button>
+          <button onClick={exportToPDF} className="flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 text-sm font-bold transition">
+            📄 Export PDF {selectedIds.size > 0 ? `(${selectedIds.size})` : ''}
+          </button>
+          <button onClick={exportToWord} className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 text-sm font-bold transition">
+            📝 Export Word {selectedIds.size > 0 ? `(${selectedIds.size})` : ''}
+          </button>
+          <span className="text-gray-500 text-sm self-center">
+            {filtered.length} shown / {applications.length} total
+          </span>
         </div>
       </div>
 

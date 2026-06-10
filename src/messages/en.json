@@ -336,5 +336,47 @@
     "title": "Study Online from Anywhere",
     "desc": "ZTF University Institute offers flexible distance learning programmes for students across Africa and the diaspora.",
     "cta": "Explore Online Programs"
+  },
+  "institutes": {
+    "title": "Higher Institutes",
+    "hiacomst_full": "Higher Institute of Agronomy, Communication Sciences and Technology",
+    "hiacomst_short": "HIACOMST",
+    "hilepmah_full": "Higher Institute of Legal Professions, Management and Humanities",
+    "hilepmah_short": "HILEPMAH",
+    "hihs_full": "Higher Institute of Health Sciences",
+    "hihs_short": "HIHS",
+    "shp_full": "School of Health Professions",
+    "shp_short": "SHP",
+    "schools_under": "Schools under this institute",
+    "view_schools": "View Schools",
+    "view_programs": "View Programs",
+    "apply": "Apply"
+  },
+  "errors": {
+    "not_found_title": "Page Not Found",
+    "not_found_desc": "The page you are looking for does not exist or has been moved. Let us guide you back.",
+    "go_home": "Go Home",
+    "contact_us": "Contact Us",
+    "server_error": "Server Error",
+    "server_error_desc": "Something went wrong on our end. Please try again later.",
+    "try_again": "Try Again",
+    "network_error": "Network error. Please check your connection.",
+    "form_invalid": "Please fill in all required fields correctly.",
+    "upload_failed": "File upload failed. Please try again.",
+    "session_expired": "Your session has expired. Please log in again."
+  },
+  "toast": {
+    "saved": "Changes saved successfully!",
+    "save_failed": "Failed to save. Please try again.",
+    "deleted": "Deleted successfully.",
+    "delete_failed": "Failed to delete. Please try again.",
+    "copied": "Copied to clipboard!",
+    "sent": "Message sent successfully!",
+    "send_failed": "Failed to send message.",
+    "uploaded": "File uploaded successfully!",
+    "upload_failed": "File upload failed.",
+    "loading": "Loading...",
+    "success": "Success!",
+    "error": "An error occurred."
   }
 }

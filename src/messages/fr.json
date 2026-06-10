@@ -308,5 +308,32 @@
     "view_schools": "Voir les Écoles",
     "view_programs": "Voir les Programmes",
     "apply": "Postuler"
+  },
+  "errors": {
+    "not_found_title": "Page Introuvable",
+    "not_found_desc": "La page que vous recherchez n'existe pas ou a été déplacée. Laissez-nous vous guider.",
+    "go_home": "Retour à l'Accueil",
+    "contact_us": "Nous Contacter",
+    "server_error": "Erreur Serveur",
+    "server_error_desc": "Une erreur s'est produite de notre côté. Veuillez réessayer plus tard.",
+    "try_again": "Réessayer",
+    "network_error": "Erreur réseau. Vérifiez votre connexion.",
+    "form_invalid": "Veuillez remplir correctement tous les champs obligatoires.",
+    "upload_failed": "Échec du téléchargement. Veuillez réessayer.",
+    "session_expired": "Votre session a expiré. Veuillez vous reconnecter."
+  },
+  "toast": {
+    "saved": "Modifications enregistrées avec succès !",
+    "save_failed": "Échec de l'enregistrement. Veuillez réessayer.",
+    "deleted": "Supprimé avec succès.",
+    "delete_failed": "Échec de la suppression. Veuillez réessayer.",
+    "copied": "Copié dans le presse-papiers !",
+    "sent": "Message envoyé avec succès !",
+    "send_failed": "Échec de l'envoi du message.",
+    "uploaded": "Fichier téléchargé avec succès !",
+    "upload_failed": "Échec du téléchargement du fichier.",
+    "loading": "Chargement...",
+    "success": "Succès !",
+    "error": "Une erreur s'est produite."
   }
 }

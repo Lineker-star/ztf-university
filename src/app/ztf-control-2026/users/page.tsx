@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
@@ -52,7 +52,7 @@ function AccessDenied() {
   }, []);
 
   useEffect(() => {
-    if (count <= 0) router.push('/admin');
+    if (count <= 0) router.push('/ztf-control-2026');
   }, [count, router]);
 
   return (
@@ -184,7 +184,7 @@ export default function AdminUsersPage() {
 
   const sendResetPassword = async (admin: AdminUser) => {
     await supabase.auth.resetPasswordForEmail(admin.email, {
-      redirectTo: `${window.location.origin}/admin/login`,
+      redirectTo: `${window.location.origin}/ztf-control-2026/login`,
     });
     setResetEmailSent(prev => ({ ...prev, [admin.id]: true }));
     setTimeout(() => setResetEmailSent(prev => { const n = { ...prev }; delete n[admin.id]; return n; }), 5000);

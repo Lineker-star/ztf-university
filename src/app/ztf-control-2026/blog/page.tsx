@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
@@ -128,7 +128,7 @@ export default function AdminBlogPage() {
           </div>
         </div>
         <Link
-          href="/admin/blog/new"
+          href="/ztf-control-2026/blog/new"
           className="inline-flex items-center gap-2 bg-[#0A1628] text-white font-bold px-4 py-2 rounded-xl hover:bg-[#C9A84C] hover:text-[#0A1628] transition text-sm flex-shrink-0"
         >
           <Plus className="w-4 h-4" /> New Post
@@ -234,7 +234,7 @@ export default function AdminBlogPage() {
                         </div>
                         <div className="min-w-0">
                           <Link
-                            href={`/admin/blog/${post.id}`}
+                            href={`/ztf-control-2026/blog/${post.id}`}
                             className="font-semibold text-[#0A1628] hover:text-[#C9A84C] transition line-clamp-1 block"
                           >
                             {post.title_en || '(Untitled)'}
@@ -278,7 +278,7 @@ export default function AdminBlogPage() {
                     <td className="px-4 py-3">
                       <div className="flex items-center justify-end gap-1">
                         <Link
-                          href={`/admin/blog/${post.id}`}
+                          href={`/ztf-control-2026/blog/${post.id}`}
                           className="p-1.5 hover:bg-[#C9A84C]/10 rounded-lg transition"
                           title="Edit"
                         >
