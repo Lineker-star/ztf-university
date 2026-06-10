@@ -11,7 +11,6 @@ export default function HeroSection() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 lg:pt-20">
-      {/* Background image with reduced overlay so faces are visible */}
       <div className="absolute inset-0">
         <Image
           src="/images/1.jpg"
@@ -20,8 +19,7 @@ export default function HeroSection() {
           className="object-cover object-top"
           priority
         />
-        {/* Reduced from /65 to /58 so graduation faces are visible */}
-        <div className="absolute inset-0 bg-[#0A1628]/50" />
+        <div className="absolute inset-0 bg-[#0A1628]/90" />
       </div>
 
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent z-10" />
@@ -36,16 +34,6 @@ export default function HeroSection() {
         >
           <GraduationCap className="w-4 h-4" />
           {t('admission_open')}
-        </motion.div>
-
-        {/* Logo */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.25 }}
-          className="flex justify-center mb-4"
-        >
-          <Image src="/images/logo.png" alt="ZTF University Institute" width={110} height={110} className="object-contain" />
         </motion.div>
 
         {/* Main Title */}

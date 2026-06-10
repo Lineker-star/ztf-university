@@ -1,5 +1,6 @@
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
+import Image from 'next/image';
 import SectionTitle from '@/components/shared/SectionTitle';
 import { Award, BookOpen, Users, Globe } from 'lucide-react';
 
@@ -21,14 +22,16 @@ export default function FounderSection() {
           {/* Left — Image & achievements */}
           <div>
             <div className="relative">
-              <div className="w-80 h-96 mx-auto lg:mx-0 rounded-2xl overflow-hidden bg-gradient-to-b from-[#162845] to-[#0A1628] border-2 border-[#C9A84C]/30 flex items-center justify-center">
-                <div className="text-center text-white p-8">
-                  <div className="w-24 h-24 bg-[#C9A84C] rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-4xl font-bold text-[#0A1628] font-heading">ZTF</span>
-                  </div>
-                  <p className="font-bold text-xl font-heading mb-1">Prof. Zacharias</p>
-                  <p className="font-bold text-xl font-heading text-[#C9A84C]">Tanee Fomum</p>
-                  <p className="text-gray-400 text-sm mt-2">1945 – 2009</p>
+              <div className="w-80 h-96 mx-auto lg:mx-0 rounded-2xl overflow-hidden border-2 border-[#C9A84C]/30 shadow-2xl relative">
+                <Image
+                  src="/images/Founder.jpeg"
+                  alt="Prof. Zacharias Tanee Fomum"
+                  fill
+                  className="object-cover object-top"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#0A1628]/90 to-transparent px-5 py-4">
+                  <p className="font-bold text-white font-heading text-base leading-tight">Prof. Zacharias Tanee Fomum</p>
+                  <p className="text-[#C9A84C] text-xs mt-0.5">1945 – 2009</p>
                 </div>
               </div>
               <div className="absolute -bottom-4 -right-4 bg-[#C9A84C] text-[#0A1628] px-4 py-2 rounded-xl font-bold text-sm shadow-lg">

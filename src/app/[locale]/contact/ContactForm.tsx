@@ -35,10 +35,10 @@ export default function ContactForm({ locale = 'en' }: { locale?: string }) {
       <div className="bg-green-50 rounded-2xl p-10 text-center border border-green-200">
         <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
         <p className="font-bold text-green-800 text-lg">
-          {isFr ? 'Message envoyé avec succès !' : 'Message sent successfully!'}
+          {isFr ? 'Message envoyé !' : 'Message sent!'}
         </p>
         <p className="text-green-700 text-sm mt-2">
-          {isFr ? 'Nous vous répondrons dans 2–3 jours ouvrables.' : 'We\'ll reply within 2–3 business days.'}
+          {isFr ? "Nous répondrons dans 24–48 heures." : "We'll reply within 24–48 hours."}
         </p>
         <button onClick={() => setStatus('idle')} className="mt-4 text-sm text-gray-500 hover:text-[#C9A84C] transition">
           {isFr ? 'Envoyer un autre message' : 'Send another message'}

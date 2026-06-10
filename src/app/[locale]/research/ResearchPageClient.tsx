@@ -36,8 +36,8 @@ export default function ResearchPageClient({ locale }: { locale: string }) {
       {/* HERO */}
       <section className="relative pt-16 lg:pt-20">
         <div className="relative h-72 md:h-80 overflow-hidden">
-          <Image src="/images/6.jpg" alt="Research & Innovation" fill className="object-cover object-top" priority />
-          <div className="absolute inset-0 bg-[#0A1628]/70" />
+          <Image src="/images/2.jpg" alt="Research & Innovation" fill className="object-cover object-top" priority />
+          <div className="absolute inset-0 bg-[#0A1628]/60" />
           <div className="relative h-full flex flex-col items-center justify-center text-center px-4">
             <h1 className="text-3xl md:text-5xl font-bold text-white font-heading mb-2">
               {isFr ? 'Recherche & Innovation' : 'Research & Innovation'}
