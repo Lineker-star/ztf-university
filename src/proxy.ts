@@ -8,5 +8,6 @@ export default createMiddleware({
 });
 
 export const config = {
-  matcher: ['/((?!admin|api|_next|.*\\..*).*)'],
+  // Exclude the secret admin panel, API routes, Next.js internals, and static files
+  matcher: ['/((?!ztf-control-2026|api|_next/static|_next/image|favicon.ico|images|.*\\..*).*)'],
 };
