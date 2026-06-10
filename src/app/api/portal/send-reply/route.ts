@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     await resend.emails.send({
-      from: 'info@ztfuniversity.com',
+      from: 'ztfuniversityinstitute@gmail.com',
       to,
       subject,
       html: `
@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
             <hr style="border: none; border-top: 1px solid #eeeeee; margin: 30px 0;" />
             <p style="color: #999; font-size: 12px; text-align: center; margin: 0;">
               ZTF University Institute | Koume, Bertoua, East Region, Cameroon<br/>
-              Tel: (+237) 679 42 47 10 | Email: info@ztfuniversity.com
+              Tel: (+237) 679 42 47 10 | Email: ztfuniversityinstitute@gmail.com
             </p>
           </div>
         </div>

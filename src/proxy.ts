@@ -8,5 +8,7 @@ export default createMiddleware({
 });
 
 export const config = {
-  matcher: ['/((?!admin|ztf-control-2026|api|_next|.*\\..*).*)',],
+  matcher: [
+    '/((?!iuztf-management|api|_next|.*\\..*).*)',
+  ],
 };

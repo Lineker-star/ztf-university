@@ -52,7 +52,7 @@ function AccessDenied() {
   }, []);
 
   useEffect(() => {
-    if (count <= 0) router.push('/admin');
+    if (count <= 0) router.push('/iuztf-management');
   }, [count, router]);
 
   return (
@@ -184,7 +184,7 @@ export default function AdminUsersPage() {
 
   const sendResetPassword = async (admin: AdminUser) => {
     await supabase.auth.resetPasswordForEmail(admin.email, {
-      redirectTo: `${window.location.origin}/admin/login`,
+      redirectTo: `${window.location.origin}/iuztf-management/login`,
     });
     setResetEmailSent(prev => ({ ...prev, [admin.id]: true }));
     setTimeout(() => setResetEmailSent(prev => { const n = { ...prev }; delete n[admin.id]; return n; }), 5000);

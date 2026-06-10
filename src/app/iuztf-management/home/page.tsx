@@ -379,7 +379,7 @@ export default function AdminHomePage() {
         <p className="text-sm text-gray-500 mb-4">
           Manage hero banners, background images, overlay settings, and titles for all pages from the centralized Hero Manager.
         </p>
-        <Link href="/admin/hero"
+        <Link href="/iuztf-management/hero"
           className="inline-flex items-center gap-2 bg-[#0A1628] text-white font-bold px-5 py-2.5 rounded-xl hover:bg-[#C9A84C] hover:text-[#0A1628] transition text-sm">
           Edit Home Hero →
         </Link>

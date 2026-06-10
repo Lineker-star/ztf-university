@@ -1,5 +1,5 @@
 // To reset password: Go to Supabase Dashboard → Authentication → Users
-// Find info@ztfuniversity.com → Click "Send password reset" or manually update password in Supabase Auth
+// Find ztfuniversityinstitute@gmail.com → Click "Send password reset" or manually update password in Supabase Auth
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
@@ -23,7 +23,7 @@ export default function PasswordResetPage() {
       const { createClientClient } = await import('@/lib/supabase/client');
       const supabase = createClientClient();
       const { error: resetError } = await supabase.auth.resetPasswordForEmail(email.trim().toLowerCase(), {
-        redirectTo: `${window.location.origin}/admin/login`,
+        redirectTo: `${window.location.origin}/iuztf-management/login`,
       });
       if (resetError) {
         setError(resetError.message);
@@ -57,7 +57,7 @@ export default function PasswordResetPage() {
                 A password reset link has been sent to <strong className="text-[#C9A84C]">{email}</strong>.
                 Check your inbox and follow the link to set a new password.
               </p>
-              <Link href="/admin/login" className="inline-flex items-center gap-2 text-[#C9A84C] hover:text-white text-sm transition">
+              <Link href="/iuztf-management/login" className="inline-flex items-center gap-2 text-[#C9A84C] hover:text-white text-sm transition">
                 <ArrowLeft className="w-4 h-4" /> Back to Login
               </Link>
             </div>
@@ -73,7 +73,7 @@ export default function PasswordResetPage() {
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     onKeyDown={e => e.key === 'Enter' && handleReset()}
-                    placeholder="info@ztfuniversity.com"
+                    placeholder="ztfuniversityinstitute@gmail.com"
                     autoFocus
                     className="w-full pl-9 pr-4 py-3 bg-[#162845] border border-white/10 rounded-xl text-white placeholder-gray-500 text-sm focus:border-[#C9A84C] outline-none transition"
                   />
@@ -86,7 +86,7 @@ export default function PasswordResetPage() {
                 >
                   {loading ? 'Sending…' : 'Send Reset Link'}
                 </button>
-                <Link href="/admin/login" className="flex items-center justify-center gap-2 text-gray-500 hover:text-gray-300 text-sm transition">
+                <Link href="/iuztf-management/login" className="flex items-center justify-center gap-2 text-gray-500 hover:text-gray-300 text-sm transition">
                   <ArrowLeft className="w-4 h-4" /> Back to Login
                 </Link>
               </div>

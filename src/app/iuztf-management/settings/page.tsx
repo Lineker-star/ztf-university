@@ -380,7 +380,7 @@ export default function AdminSettingsPage() {
           <div className="grid sm:grid-cols-2 gap-4">
             <Field label="Main Email">
               <input value={emailMain} onChange={e => setEmailMain(e.target.value)}
-                placeholder="info@ztfuniversity.com" className={inputCls} type="email" />
+                placeholder="ztfuniversityinstitute@gmail.com" className={inputCls} type="email" />
             </Field>
             <Field label="Secondary Email">
               <input value={emailSecondary} onChange={e => setEmailSecondary(e.target.value)}

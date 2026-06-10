@@ -307,7 +307,7 @@ export default function BlogEditor({ mode, postId }: BlogEditorProps) {
           .single();
         if (error) throw error;
         setSaveMsg('Saved!');
-        if (inserted) router.push(`/admin/blog/${inserted.id}`);
+        if (inserted) router.push(`/iuztf-management/blog/${inserted.id}`);
       } else {
         const { error } = await supabase
           .from('cms_blog_posts')
@@ -331,14 +331,14 @@ export default function BlogEditor({ mode, postId }: BlogEditorProps) {
     if (!postId) return;
     const supabase = createClientClient();
     await supabase.from('cms_blog_posts').delete().eq('id', postId);
-    router.push('/admin/blog');
+    router.push('/iuztf-management/blog');
   };
 
   if (loadError) {
     return (
       <div className="p-12 text-center text-gray-400 text-sm">
         {loadError}
-        <Link href="/admin/blog" className="ml-2 text-[#C9A84C] underline">Back to Blog</Link>
+        <Link href="/iuztf-management/blog" className="ml-2 text-[#C9A84C] underline">Back to Blog</Link>
       </div>
     );
   }
@@ -710,7 +710,7 @@ export default function BlogEditor({ mode, postId }: BlogEditorProps) {
       <div className="fixed bottom-0 left-0 right-0 z-30 bg-white border-t border-gray-100 shadow-lg">
         <div className="max-w-screen-xl mx-auto px-6 py-3 flex items-center justify-between gap-3">
           <Link
-            href="/admin/blog"
+            href="/iuztf-management/blog"
             className="flex items-center gap-1.5 text-sm font-semibold text-gray-500 hover:text-[#0A1628] transition"
           >
             <ArrowLeft className="w-4 h-4" />

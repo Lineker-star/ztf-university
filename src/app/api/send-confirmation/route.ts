@@ -45,7 +45,7 @@ export async function POST(req: NextRequest) {
             <hr style="border: none; border-top: 1px solid #eeeeee; margin: 25px 0;" />
             <p style="color: #999; font-size: 12px; text-align: center; margin: 0;">
               ZTF University Institute | Koume, Bertoua, East Region, Cameroon<br/>
-              Tel: (+237) 679 42 47 10 | Email: info@ztfuniversity.com<br/>
+              Tel: (+237) 679 42 47 10 | Email: ztfuniversityinstitute@gmail.com<br/>
               <em>"Empowering World Innovators and Leaders for Global Impact"</em>
             </p>
           </div>
