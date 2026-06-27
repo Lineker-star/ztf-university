@@ -4,27 +4,17 @@ import Image from 'next/image';
 import { useTranslations, useLocale } from 'next-intl';
 import { motion } from 'framer-motion';
 import { GraduationCap, ArrowRight, BookOpen } from 'lucide-react';
+import HeroSlideshow from '@/components/home/HeroSlideshow';
 
 export default function HeroSection() {
   const t = useTranslations('hero');
   const locale = useLocale();
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 lg:pt-20">
-      <div className="absolute inset-0">
-        <Image
-          src="/images/1.jpg"
-          alt="ZTF University Graduation"
-          fill
-          className="object-cover object-top"
-          priority
-        />
-        <div className="absolute inset-0 bg-[#0A1628]/90" />
-      </div>
-
+    <HeroSlideshow overlayOpacity={0.72}>
       <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#C9A84C] to-transparent z-10" />
 
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16 text-center">
         {/* Admission Badge */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -150,6 +140,6 @@ export default function HeroSection() {
           </div>
         </motion.div>
       </div>
-    </section>
+    </HeroSlideshow>
   );
 }
