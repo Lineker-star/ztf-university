@@ -3,8 +3,12 @@ import '@/app/globals.css';
 import AdminLayoutClient from './AdminLayoutClient';
 
 export const metadata: Metadata = {
-  title: 'Management Portal',
+  title: 'IU-ZTF Management Portal',
   description: 'Authorized Personnel Only',
+  icons: {
+    icon: '/images/logo.png',
+    shortcut: '/images/logo.png',
+  },
 };
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {

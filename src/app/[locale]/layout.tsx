@@ -9,11 +9,17 @@ import '../globals.css';
 import { locales } from '@/lib/i18n/request';
 
 export const metadata: Metadata = {
-  title: 'ZTF University Institute | Institut Universitaire ZTF — Bertoua, Cameroon',
-  description: 'ZTF University Institute (ZTF-UI) — A Christian university founded on excellence, faith, and service in Bertoua, Cameroon. Empowering World Innovators and Leaders for Global Impact.',
+  title: 'ZTF University Institute | Bertoua, Cameroon',
+  description: 'ZTF University Institute — Empowering World Innovators and Leaders for Global Impact. A Christian university in Bertoua, Cameroon.',
   icons: {
-    icon: '/images/logo.png',
-    apple: '/images/logo.png',
+    icon: [
+      { url: '/favicon.png', type: 'image/png', sizes: '32x32' },
+      { url: '/images/logo.png', type: 'image/png', sizes: '192x192' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180' },
+    ],
+    shortcut: '/favicon.png',
   },
 };
 
@@ -44,6 +50,9 @@ export default async function LocaleLayout({
           href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@400;600&family=Noto+Sans+SC:wght@400;700&family=Noto+Sans+KR:wght@400;700&display=swap"
           rel="stylesheet"
         />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="icon" href="/favicon.png" type="image/png" />
+        <meta name="theme-color" content="#0A1628" />
       </head>
       <body>
         <NextIntlClientProvider messages={messages} locale={locale}>

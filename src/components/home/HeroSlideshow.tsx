@@ -38,7 +38,7 @@ export default function HeroSlideshow({
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex(prev => (prev + 1) % SLIDES.length);
-    }, 5000);
+    }, 15000);
     return () => clearInterval(interval);
   }, []);
 
@@ -53,7 +53,7 @@ export default function HeroSlideshow({
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.2, ease: 'easeInOut' }}
+            transition={{ duration: 0.08, ease: 'easeInOut' }}
           >
             <Image
               src={SLIDES[currentIndex].src}
