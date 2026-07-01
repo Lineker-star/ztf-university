@@ -28,24 +28,63 @@ export default async function ApplyPage({ params }: { params: Promise<{ locale: 
 
   return (
     <>
-      <section className="relative pt-16 lg:pt-20">
-        <div className="relative h-56 overflow-hidden">
-          <Image src="/images/3.jpg" alt="Apply" fill className="object-cover object-top" />
-          <div className="absolute inset-0 bg-[#0A1628]/70" />
-          <div className="relative h-full flex flex-col items-center justify-center text-center px-4">
-            <span className="inline-block bg-[#C9A84C] text-[#0A1628] text-xs font-bold px-4 py-1 rounded-full mb-3 uppercase">
-              {locale === 'fr' ? 'Admissions 2026–2027 Ouvertes' : '2026–2027 Applications Open'}
-            </span>
-            <h1 className="text-3xl md:text-4xl font-bold text-white font-heading mb-2">
-              {t('apply_title')}
-            </h1>
-            <p className="text-gray-300 text-sm max-w-xl">
-              {locale === 'fr'
-                ? "Remplissez le formulaire ci-dessous pour postuler à l'Institut Universitaire ZTF pour l'année 2026–2027."
-                : 'Fill out the form below to apply to ZTF University Institute for the 2026–2027 academic year.'}
-            </p>
+      <section className="relative min-h-[420px] sm:min-h-[480px] flex items-center justify-center overflow-hidden">
+
+        {/* Background image */}
+        <Image
+          src="/images/students-group.jpeg"
+          alt="ZTF University Institute"
+          fill
+          priority
+          className="object-cover object-center"
+        />
+
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a1628]/80 via-[#0a1628]/70 to-[#0a1628]/90" />
+
+        {/* Content */}
+        <div className="relative z-10 text-center px-4 sm:px-6 max-w-3xl mx-auto py-16 sm:py-20">
+
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-[#C9A84C]/20 border border-[#C9A84C]/50 text-[#E8C97A] px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-widest uppercase mb-5">
+            <span className="w-2 h-2 rounded-full bg-[#C9A84C] animate-pulse" />
+            {locale === 'fr' ? '2026–2027 Candidatures Ouvertes' : '2026–2027 Applications Open'}
           </div>
+
+          {/* Title */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4">
+            {locale === 'fr' ? (
+              <>Demander <span className="text-[#C9A84C]">l&apos;Admission</span></>
+            ) : (
+              <>Apply for <span className="text-[#C9A84C]">Admission</span></>
+            )}
+          </h1>
+
+          {/* Subtitle */}
+          <p className="text-white/70 text-base sm:text-lg max-w-xl mx-auto leading-relaxed mb-8">
+            {locale === 'fr'
+              ? "Remplissez le formulaire ci-dessous pour postuler à l'Institut Universitaire ZTF pour l'année académique 2026–2027."
+              : 'Fill out the form below to apply to ZTF University Institute for the 2026–2027 academic year.'}
+          </p>
+
+          {/* Info pills */}
+          <div className="flex flex-wrap items-center justify-center gap-3 text-sm">
+            <span className="flex items-center gap-1.5 bg-white/10 border border-white/20 text-white/80 px-3 py-1.5 rounded-full">
+              📍 {locale === 'fr' ? 'Koumé, Bertoua — Cameroun' : 'Koumé, Bertoua — Cameroon'}
+            </span>
+            <span className="flex items-center gap-1.5 bg-white/10 border border-white/20 text-white/80 px-3 py-1.5 rounded-full">
+              📞 691 459 611
+            </span>
+            <span className="flex items-center gap-1.5 bg-white/10 border border-white/20 text-white/80 px-3 py-1.5 rounded-full">
+              🌐 ztfuniversity.com
+            </span>
+          </div>
+
         </div>
+
+        {/* Bottom fade into next section */}
+        <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#0a1628] to-transparent" />
+
       </section>
 
       <section className="py-12 px-4 bg-navy-900" style={{ background: 'linear-gradient(135deg, #0a1628 0%, #132240 100%)' }}>
