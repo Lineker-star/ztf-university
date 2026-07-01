@@ -201,7 +201,15 @@
       "rejected": "Refusé",
       "waitlisted": "Liste d'Attente",
       "enrolled": "Inscrit"
-    }
+    },
+    "admission_req_title": "Conditions d'Admission",
+    "admission_req_subtitle": "Les documents suivants sont obligatoires pour votre admission",
+    "admission_req_fees": "Frais de Pré-inscription",
+    "admission_req_fees_amount": "35 000 FCFA",
+    "admission_req_covers_title": "Les Frais d'Inscription Couvrent :",
+    "admission_req_covers": "Visite médicale | Carte d'étudiant | Code de conduite de l'étudiant | T-Shirt de l'école",
+    "admission_req_foreign_title": "N.B. — Candidats Titulaires de Diplômes Étrangers",
+    "admission_req_foreign_text": "Doivent obligatoirement déposer en plus du dossier :"
   },
   "gallery": {
     "title": "Galerie Médias",

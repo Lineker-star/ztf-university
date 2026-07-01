@@ -232,7 +232,15 @@
       "rejected": "Rejected",
       "waitlisted": "Waitlisted",
       "enrolled": "Enrolled"
-    }
+    },
+    "admission_req_title": "Admission Requirements",
+    "admission_req_subtitle": "The following documents are required for admission",
+    "admission_req_fees": "Pre-Registration Fees",
+    "admission_req_fees_amount": "35,000 FCFA",
+    "admission_req_covers_title": "The Pre-Registration Fee Covers:",
+    "admission_req_covers": "Medical check-up | Student card | Student code of conduct | School T-shirt",
+    "admission_req_foreign_title": "N.B. — Candidates Holding Foreign Diplomas",
+    "admission_req_foreign_text": "Must submit the following additional documents:"
   },
   "gallery": {
     "title": "Media Gallery",
