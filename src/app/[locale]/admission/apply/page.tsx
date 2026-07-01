@@ -24,8 +24,8 @@ const FOREIGN_DIPLOMA_DOCS = [
 
 export default async function ApplyPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: 'admission' });
-  const isFr = locale === 'fr';
+  const currentLocale = locale ?? 'en';
+  const t = await getTranslations({ locale: currentLocale, namespace: 'admission' });
 
   return (
     <>
@@ -35,13 +35,13 @@ export default async function ApplyPage({ params }: { params: Promise<{ locale: 
           <div className="absolute inset-0 bg-[#0A1628]/70" />
           <div className="relative h-full flex flex-col items-center justify-center text-center px-4">
             <span className="inline-block bg-[#C9A84C] text-[#0A1628] text-xs font-bold px-4 py-1 rounded-full mb-3 uppercase">
-              {isFr ? 'Admissions 2026–2027 Ouvertes' : '2026–2027 Applications Open'}
+              {currentLocale === 'fr' ? 'Admissions 2026–2027 Ouvertes' : '2026–2027 Applications Open'}
             </span>
             <h1 className="text-3xl md:text-4xl font-bold text-white font-heading mb-2">
               {t('apply_title')}
             </h1>
             <p className="text-gray-300 text-sm max-w-xl">
-              {isFr
+              {currentLocale === 'fr'
                 ? "Remplissez le formulaire ci-dessous pour postuler à l'Institut Universitaire ZTF pour l'année 2026–2027."
                 : 'Fill out the form below to apply to ZTF University Institute for the 2026–2027 academic year.'}
             </p>
@@ -56,7 +56,7 @@ export default async function ApplyPage({ params }: { params: Promise<{ locale: 
           <div className="text-center mb-10">
             <span className="inline-flex items-center gap-2 bg-ztf-gold/20 border border-ztf-gold/40 text-ztf-goldLight px-4 py-1.5 rounded-full text-sm font-medium mb-4">
               <FileCheck className="w-4 h-4" />
-              {isFr ? 'Documents Requis' : 'Required Documents'}
+              {currentLocale === 'fr' ? 'Documents Requis' : 'Required Documents'}
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-white mb-3">
               {t('admission_req_title')}
@@ -75,7 +75,7 @@ export default async function ApplyPage({ params }: { params: Promise<{ locale: 
                     <Check className="w-3.5 h-3.5 text-ztf-gold" />
                   </div>
                   <span className="text-white/85 text-sm sm:text-base leading-relaxed">
-                    {isFr ? req.fr : req.en}
+                    {currentLocale === 'fr' ? req.fr : req.en}
                   </span>
                 </li>
               ))}
@@ -113,7 +113,7 @@ export default async function ApplyPage({ params }: { params: Promise<{ locale: 
               {FOREIGN_DIPLOMA_DOCS.map((doc, i) => (
                 <li key={i} className="flex items-start gap-2 text-sm text-white/75">
                   <span className="text-amber-400 mt-1">—</span>
-                  {isFr ? doc.fr : doc.en}
+                  <span>{currentLocale === 'fr' ? doc.fr : doc.en}</span>
                 </li>
               ))}
             </ul>
@@ -122,7 +122,7 @@ export default async function ApplyPage({ params }: { params: Promise<{ locale: 
           {/* Location */}
           <div className="text-center text-white/60 text-sm">
             <MapPin className="w-4 h-4 inline mr-1.5 text-ztf-gold" />
-            {isFr
+            {currentLocale === 'fr'
               ? 'Koumé - Bertoua, En Face la Hope Clinic · Tél: 691 459 611 | 690 355 329 | 657 546 543'
               : 'Koumé - Bertoua, Opposite Hope Clinic · Tel: 691 459 611 | 690 355 329 | 657 546 543'}
           </div>
